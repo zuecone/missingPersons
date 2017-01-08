@@ -11,14 +11,18 @@ import UIKit
 class PersonCell: UICollectionViewCell {
     
     @IBOutlet weak var personImage: UIImageView!
+    var person: Person!
     
-    func configureLocalImage(imgUrl: String){
-        personImage.image = UIImage(named: imgUrl)
+    func configureLocalImage(person: Person){
+        self.personImage.image = UIImage(named: person.personImageUrl!)
+        person.personImage = self.personImage.image
+        //person.downloadFaceId() removed due to setSelected
     }
     
     
-    func configureCell(imgUrl: String){
-        if let url = URL(string: imgUrl){
+    func configureCell(person: Person){
+        self.person = person
+        if let url = URL(string: "\(baseURL)\(person.personImageUrl!)"){
             downloadImage(url: url)
         }
     }
@@ -29,6 +33,8 @@ class PersonCell: UICollectionViewCell {
                 guard let data = data as NSData?, error == nil else {return}
                 //print("data: \(data)")
                 //self.personImage.image = UIImage(data: data)
+                self.person.personImage = self.personImage.image
+                //
         }
         }
     }
@@ -44,6 +50,14 @@ class PersonCell: UICollectionViewCell {
             completion(data as NSData?,response as URLResponse?, error as NSError?)
             }.resume()
         
+    }
+    
+    func setSelected(person: Person){
+        self.person = person
+        personImage.layer.borderWidth = 2.0
+        personImage.layer.borderColor = UIColor.yellow.cgColor
+        person.personImage = self.personImage.image
+        person.downloadFaceId()
     }
     
 }
