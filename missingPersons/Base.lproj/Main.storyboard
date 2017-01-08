@@ -78,7 +78,7 @@
                                     <constraint firstAttribute="bottom" secondItem="l9q-hm-CEw" secondAttribute="bottom" constant="8" id="p9N-nd-rN8"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oju-ve-ujP">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="Oju-ve-ujP">
                                 <rect key="frame" x="118" y="264" width="138" height="138"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="138" id="fMp-48-d6b"/>
